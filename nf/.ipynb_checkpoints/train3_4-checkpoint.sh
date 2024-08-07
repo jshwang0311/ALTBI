@@ -1,0 +1,1 @@
+python train.py --total_proc_num 4 --proc_idx 3 --gpu_num 0 --dataset_name_option adbench_all

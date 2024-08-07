@@ -1,0 +1,2 @@
+python train.py --total_proc_num 4 --proc_idx 2 --gpu_num 1 --skip 3 --dataset_name_option adbench_all
+# python train.py --total_proc_num 8 --proc_idx 2 --gpu_num 1 --skip 10 --dataset_name_option adbench_all

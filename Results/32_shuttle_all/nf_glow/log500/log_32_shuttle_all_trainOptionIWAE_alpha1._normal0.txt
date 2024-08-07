@@ -1,0 +1,26 @@
+2024-08-05 01:40:44,329 - root - INFO - -----------------------------------------------------------------
+2024-08-05 01:40:44,336 - root - INFO - -----------------------------------------------------------------
+2024-08-05 01:40:44,336 - root - INFO - Log file is ../Results/32_shuttle_all/nf_glow/log500/log_32_shuttle_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-05 01:40:44,336 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-05 01:40:44,336 - root - INFO - Dataset: 32_shuttle_all
+2024-08-05 01:40:44,336 - root - INFO - Normal class: 0
+2024-08-05 01:40:44,336 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-05 01:40:44,336 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-05 01:40:44,336 - root - INFO - Pollution ratio of unlabeled train data: 0.07
+2024-08-05 01:40:44,336 - root - INFO - Number of known anomaly classes: 0
+2024-08-05 01:40:44,336 - root - INFO - Network: shuttle_mlp_vae_gaussian
+2024-08-05 01:40:44,336 - root - INFO - nu-parameter: 0.10
+2024-08-05 01:40:45,015 - root - INFO - Starting train filter_model...
+2024-08-06 12:23:11,812 - root - INFO - -----------------------------------------------------------------
+2024-08-06 12:23:11,819 - root - INFO - -----------------------------------------------------------------
+2024-08-06 12:23:11,819 - root - INFO - Log file is ../Results/32_shuttle_all/nf_glow/log500/log_32_shuttle_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-06 12:23:11,819 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-06 12:23:11,819 - root - INFO - Dataset: 32_shuttle_all
+2024-08-06 12:23:11,819 - root - INFO - Normal class: 0
+2024-08-06 12:23:11,819 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-06 12:23:11,819 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-06 12:23:11,820 - root - INFO - Pollution ratio of unlabeled train data: 0.07
+2024-08-06 12:23:11,820 - root - INFO - Number of known anomaly classes: 0
+2024-08-06 12:23:11,820 - root - INFO - Network: shuttle_mlp_vae_gaussian
+2024-08-06 12:23:11,820 - root - INFO - nu-parameter: 0.10
+2024-08-06 12:23:12,499 - root - INFO - Starting train filter_model...

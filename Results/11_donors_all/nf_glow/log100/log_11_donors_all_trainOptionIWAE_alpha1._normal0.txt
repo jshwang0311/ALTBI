@@ -1,0 +1,90 @@
+2024-08-05 05:13:08,744 - root - INFO - -----------------------------------------------------------------
+2024-08-05 05:13:08,797 - root - INFO - -----------------------------------------------------------------
+2024-08-05 05:13:08,797 - root - INFO - Log file is ../Results/11_donors_all/nf_glow/log100/log_11_donors_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-05 05:13:08,797 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-05 05:13:08,798 - root - INFO - Dataset: 11_donors_all
+2024-08-05 05:13:08,798 - root - INFO - Normal class: 0
+2024-08-05 05:13:08,798 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-05 05:13:08,799 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-05 05:13:08,799 - root - INFO - Pollution ratio of unlabeled train data: 0.06
+2024-08-05 05:13:08,799 - root - INFO - Number of known anomaly classes: 0
+2024-08-05 05:13:08,800 - root - INFO - Network: 11_donors_mlp_vae_gaussian
+2024-08-05 05:13:08,800 - root - INFO - nu-parameter: 0.10
+2024-08-05 05:13:18,234 - root - INFO - Starting train filter_model...
+2024-08-05 05:58:13,301 - root - INFO - -----------------------------------------------------------------
+2024-08-05 05:58:13,301 - root - INFO - -----------------------------------------------------------------
+2024-08-05 05:58:13,301 - root - INFO - Log file is ../Results/11_donors_all/nf_glow/log100/log_11_donors_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-05 05:58:13,301 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-05 05:58:13,301 - root - INFO - Dataset: 11_donors_all
+2024-08-05 05:58:13,301 - root - INFO - Normal class: 0
+2024-08-05 05:58:13,301 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-05 05:58:13,302 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-05 05:58:13,302 - root - INFO - Pollution ratio of unlabeled train data: 0.06
+2024-08-05 05:58:13,302 - root - INFO - Number of known anomaly classes: 0
+2024-08-05 05:58:13,302 - root - INFO - Network: 11_donors_mlp_vae_gaussian
+2024-08-05 05:58:13,302 - root - INFO - nu-parameter: 0.10
+2024-08-06 11:27:56,437 - root - INFO - -----------------------------------------------------------------
+2024-08-06 11:27:56,437 - root - INFO - -----------------------------------------------------------------
+2024-08-06 11:27:56,437 - root - INFO - Log file is ../Results/11_donors_all/nf_glow/log100/log_11_donors_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-06 11:27:56,437 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-06 11:27:56,437 - root - INFO - Dataset: 11_donors_all
+2024-08-06 11:27:56,437 - root - INFO - Normal class: 0
+2024-08-06 11:27:56,437 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-06 11:27:56,437 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-06 11:27:56,437 - root - INFO - Pollution ratio of unlabeled train data: 0.06
+2024-08-06 11:27:56,437 - root - INFO - Number of known anomaly classes: 0
+2024-08-06 11:27:56,437 - root - INFO - Network: 11_donors_mlp_vae_gaussian
+2024-08-06 11:27:56,437 - root - INFO - nu-parameter: 0.10
+2024-08-06 11:28:04,829 - root - INFO - Starting train filter_model...
+2024-08-06 11:54:30,809 - root - INFO - -----------------------------------------------------------------
+2024-08-06 11:54:30,811 - root - INFO - -----------------------------------------------------------------
+2024-08-06 11:54:30,811 - root - INFO - Log file is ../Results/11_donors_all/nf_glow/log200/log_11_donors_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-06 11:54:30,811 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-06 11:54:30,811 - root - INFO - Dataset: 11_donors_all
+2024-08-06 11:54:30,811 - root - INFO - Normal class: 0
+2024-08-06 11:54:30,811 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-06 11:54:30,811 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-06 11:54:30,812 - root - INFO - Pollution ratio of unlabeled train data: 0.06
+2024-08-06 11:54:30,812 - root - INFO - Number of known anomaly classes: 0
+2024-08-06 11:54:30,812 - root - INFO - Network: 11_donors_mlp_vae_gaussian
+2024-08-06 11:54:30,812 - root - INFO - nu-parameter: 0.10
+2024-08-06 11:54:39,664 - root - INFO - Starting train filter_model...
+2024-08-06 12:21:27,604 - root - INFO - -----------------------------------------------------------------
+2024-08-06 12:21:27,608 - root - INFO - -----------------------------------------------------------------
+2024-08-06 12:21:27,608 - root - INFO - Log file is ../Results/11_donors_all/nf_glow/log300/log_11_donors_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-06 12:21:27,608 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-06 12:21:27,608 - root - INFO - Dataset: 11_donors_all
+2024-08-06 12:21:27,608 - root - INFO - Normal class: 0
+2024-08-06 12:21:27,608 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-06 12:21:27,608 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-06 12:21:27,608 - root - INFO - Pollution ratio of unlabeled train data: 0.06
+2024-08-06 12:21:27,608 - root - INFO - Number of known anomaly classes: 0
+2024-08-06 12:21:27,608 - root - INFO - Network: 11_donors_mlp_vae_gaussian
+2024-08-06 12:21:27,608 - root - INFO - nu-parameter: 0.10
+2024-08-06 12:21:36,348 - root - INFO - Starting train filter_model...
+2024-08-06 12:48:09,976 - root - INFO - -----------------------------------------------------------------
+2024-08-06 12:48:09,981 - root - INFO - -----------------------------------------------------------------
+2024-08-06 12:48:09,981 - root - INFO - Log file is ../Results/11_donors_all/nf_glow/log400/log_11_donors_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-06 12:48:09,981 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-06 12:48:09,981 - root - INFO - Dataset: 11_donors_all
+2024-08-06 12:48:09,981 - root - INFO - Normal class: 0
+2024-08-06 12:48:09,981 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-06 12:48:09,981 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-06 12:48:09,981 - root - INFO - Pollution ratio of unlabeled train data: 0.06
+2024-08-06 12:48:09,981 - root - INFO - Number of known anomaly classes: 0
+2024-08-06 12:48:09,981 - root - INFO - Network: 11_donors_mlp_vae_gaussian
+2024-08-06 12:48:09,981 - root - INFO - nu-parameter: 0.10
+2024-08-06 12:48:18,648 - root - INFO - Starting train filter_model...
+2024-08-06 13:14:48,919 - root - INFO - -----------------------------------------------------------------
+2024-08-06 13:14:48,925 - root - INFO - -----------------------------------------------------------------
+2024-08-06 13:14:48,925 - root - INFO - Log file is ../Results/11_donors_all/nf_glow/log500/log_11_donors_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-06 13:14:48,926 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-06 13:14:48,926 - root - INFO - Dataset: 11_donors_all
+2024-08-06 13:14:48,926 - root - INFO - Normal class: 0
+2024-08-06 13:14:48,926 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-06 13:14:48,926 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-06 13:14:48,926 - root - INFO - Pollution ratio of unlabeled train data: 0.06
+2024-08-06 13:14:48,926 - root - INFO - Number of known anomaly classes: 0
+2024-08-06 13:14:48,926 - root - INFO - Network: 11_donors_mlp_vae_gaussian
+2024-08-06 13:14:48,926 - root - INFO - nu-parameter: 0.10
+2024-08-06 13:14:57,616 - root - INFO - Starting train filter_model...

@@ -1,0 +1,92 @@
+2024-08-03 14:56:06,526 - root - INFO - -----------------------------------------------------------------
+2024-08-03 14:56:06,536 - root - INFO - -----------------------------------------------------------------
+2024-08-03 14:56:06,536 - root - INFO - Log file is ../Results/2_annthyroid_all/nf_glow/log200/log_2_annthyroid_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-03 14:56:06,536 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-03 14:56:06,536 - root - INFO - Dataset: 2_annthyroid_all
+2024-08-03 14:56:06,536 - root - INFO - Normal class: 0
+2024-08-03 14:56:06,536 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-03 14:56:06,536 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-03 14:56:06,536 - root - INFO - Pollution ratio of unlabeled train data: 0.07
+2024-08-03 14:56:06,537 - root - INFO - Number of known anomaly classes: 0
+2024-08-03 14:56:06,537 - root - INFO - Network: annthyroid_mlp_vae_gaussian
+2024-08-03 14:56:06,537 - root - INFO - nu-parameter: 0.10
+2024-08-03 14:56:06,703 - root - INFO - Starting train filter_model...
+2024-08-04 23:19:43,363 - root - INFO - -----------------------------------------------------------------
+2024-08-04 23:19:43,366 - root - INFO - -----------------------------------------------------------------
+2024-08-04 23:19:43,366 - root - INFO - Log file is ../Results/2_annthyroid_all/nf_glow/log200/log_2_annthyroid_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-04 23:19:43,366 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-04 23:19:43,367 - root - INFO - Dataset: 2_annthyroid_all
+2024-08-04 23:19:43,367 - root - INFO - Normal class: 0
+2024-08-04 23:19:43,368 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-04 23:19:43,368 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-04 23:19:43,368 - root - INFO - Pollution ratio of unlabeled train data: 0.07
+2024-08-04 23:19:43,369 - root - INFO - Number of known anomaly classes: 0
+2024-08-04 23:19:43,369 - root - INFO - Network: annthyroid_mlp_vae_gaussian
+2024-08-04 23:19:43,369 - root - INFO - nu-parameter: 0.10
+2024-08-04 23:19:43,557 - root - INFO - Starting train filter_model...
+2024-08-04 23:42:33,510 - root - INFO - Starting train filter_model...
+2024-08-04 23:42:52,841 - root - INFO - Starting train filter_model...
+2024-08-04 23:48:53,918 - root - INFO - -----------------------------------------------------------------
+2024-08-04 23:48:53,919 - root - INFO - -----------------------------------------------------------------
+2024-08-04 23:48:53,919 - root - INFO - Log file is ../Results/2_annthyroid_all/nf_glow/log200/log_2_annthyroid_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-04 23:48:53,919 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-04 23:48:53,919 - root - INFO - Dataset: 2_annthyroid_all
+2024-08-04 23:48:53,919 - root - INFO - Normal class: 0
+2024-08-04 23:48:53,919 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-04 23:48:53,919 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-04 23:48:53,919 - root - INFO - Pollution ratio of unlabeled train data: 0.07
+2024-08-04 23:48:53,919 - root - INFO - Number of known anomaly classes: 0
+2024-08-04 23:48:53,919 - root - INFO - Network: annthyroid_mlp_vae_gaussian
+2024-08-04 23:48:53,919 - root - INFO - nu-parameter: 0.10
+2024-08-04 23:48:54,204 - root - INFO - Starting train filter_model...
+2024-08-04 23:49:39,579 - root - INFO - -----------------------------------------------------------------
+2024-08-04 23:49:39,579 - root - INFO - -----------------------------------------------------------------
+2024-08-04 23:49:39,579 - root - INFO - Log file is ../Results/2_annthyroid_all/nf_glow/log300/log_2_annthyroid_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-04 23:49:39,579 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-04 23:49:39,580 - root - INFO - Dataset: 2_annthyroid_all
+2024-08-04 23:49:39,580 - root - INFO - Normal class: 0
+2024-08-04 23:49:39,580 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-04 23:49:39,580 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-04 23:49:39,580 - root - INFO - Pollution ratio of unlabeled train data: 0.07
+2024-08-04 23:49:39,580 - root - INFO - Number of known anomaly classes: 0
+2024-08-04 23:49:39,580 - root - INFO - Network: annthyroid_mlp_vae_gaussian
+2024-08-04 23:49:39,580 - root - INFO - nu-parameter: 0.10
+2024-08-04 23:49:39,924 - root - INFO - Starting train filter_model...
+2024-08-04 23:50:23,941 - root - INFO - -----------------------------------------------------------------
+2024-08-04 23:50:23,942 - root - INFO - -----------------------------------------------------------------
+2024-08-04 23:50:23,942 - root - INFO - Log file is ../Results/2_annthyroid_all/nf_glow/log400/log_2_annthyroid_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-04 23:50:23,942 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-04 23:50:23,943 - root - INFO - Dataset: 2_annthyroid_all
+2024-08-04 23:50:23,943 - root - INFO - Normal class: 0
+2024-08-04 23:50:23,943 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-04 23:50:23,943 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-04 23:50:23,943 - root - INFO - Pollution ratio of unlabeled train data: 0.07
+2024-08-04 23:50:23,943 - root - INFO - Number of known anomaly classes: 0
+2024-08-04 23:50:23,943 - root - INFO - Network: annthyroid_mlp_vae_gaussian
+2024-08-04 23:50:23,943 - root - INFO - nu-parameter: 0.10
+2024-08-04 23:50:24,325 - root - INFO - Starting train filter_model...
+2024-08-04 23:51:04,233 - root - INFO - -----------------------------------------------------------------
+2024-08-04 23:51:04,236 - root - INFO - -----------------------------------------------------------------
+2024-08-04 23:51:04,236 - root - INFO - Log file is ../Results/2_annthyroid_all/nf_glow/log500/log_2_annthyroid_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-04 23:51:04,236 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-04 23:51:04,236 - root - INFO - Dataset: 2_annthyroid_all
+2024-08-04 23:51:04,236 - root - INFO - Normal class: 0
+2024-08-04 23:51:04,236 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-04 23:51:04,236 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-04 23:51:04,236 - root - INFO - Pollution ratio of unlabeled train data: 0.07
+2024-08-04 23:51:04,236 - root - INFO - Number of known anomaly classes: 0
+2024-08-04 23:51:04,237 - root - INFO - Network: annthyroid_mlp_vae_gaussian
+2024-08-04 23:51:04,237 - root - INFO - nu-parameter: 0.10
+2024-08-04 23:51:04,408 - root - INFO - Starting train filter_model...
+2024-08-04 23:51:42,993 - root - INFO - -----------------------------------------------------------------
+2024-08-04 23:51:42,998 - root - INFO - -----------------------------------------------------------------
+2024-08-04 23:51:42,998 - root - INFO - Log file is ../Results/3_backdoor_all/nf_glow/log100/log_3_backdoor_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-04 23:51:42,998 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-04 23:51:42,998 - root - INFO - Dataset: 3_backdoor_all
+2024-08-04 23:51:42,998 - root - INFO - Normal class: 0
+2024-08-04 23:51:42,998 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-04 23:51:42,998 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-04 23:51:42,998 - root - INFO - Pollution ratio of unlabeled train data: 0.02
+2024-08-04 23:51:42,998 - root - INFO - Number of known anomaly classes: 0
+2024-08-04 23:51:42,998 - root - INFO - Network: 3_backdoor_mlp_vae_gaussian
+2024-08-04 23:51:42,999 - root - INFO - nu-parameter: 0.10

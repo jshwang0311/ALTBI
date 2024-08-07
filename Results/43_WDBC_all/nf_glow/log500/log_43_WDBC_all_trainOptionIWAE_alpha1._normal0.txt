@@ -1,0 +1,13 @@
+2024-08-05 03:22:16,121 - root - INFO - -----------------------------------------------------------------
+2024-08-05 03:22:16,125 - root - INFO - -----------------------------------------------------------------
+2024-08-05 03:22:16,126 - root - INFO - Log file is ../Results/43_WDBC_all/nf_glow/log500/log_43_WDBC_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-05 03:22:16,127 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-05 03:22:16,127 - root - INFO - Dataset: 43_WDBC_all
+2024-08-05 03:22:16,128 - root - INFO - Normal class: 0
+2024-08-05 03:22:16,128 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-05 03:22:16,129 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-05 03:22:16,129 - root - INFO - Pollution ratio of unlabeled train data: 0.03
+2024-08-05 03:22:16,130 - root - INFO - Number of known anomaly classes: 0
+2024-08-05 03:22:16,130 - root - INFO - Network: 43_WDBC_mlp_vae_gaussian
+2024-08-05 03:22:16,131 - root - INFO - nu-parameter: 0.10
+2024-08-05 03:22:16,173 - root - INFO - Starting train filter_model...

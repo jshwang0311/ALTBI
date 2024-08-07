@@ -1,0 +1,26 @@
+2024-08-05 09:25:41,018 - root - INFO - -----------------------------------------------------------------
+2024-08-05 09:25:41,022 - root - INFO - -----------------------------------------------------------------
+2024-08-05 09:25:41,022 - root - INFO - Log file is ../Results/21_Lymphography_all/nf_glow/log400/log_21_Lymphography_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-05 09:25:41,022 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-05 09:25:41,022 - root - INFO - Dataset: 21_Lymphography_all
+2024-08-05 09:25:41,022 - root - INFO - Normal class: 0
+2024-08-05 09:25:41,023 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-05 09:25:41,023 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-05 09:25:41,023 - root - INFO - Pollution ratio of unlabeled train data: 0.04
+2024-08-05 09:25:41,023 - root - INFO - Number of known anomaly classes: 0
+2024-08-05 09:25:41,023 - root - INFO - Network: 21_Lymphography_mlp_vae_gaussian
+2024-08-05 09:25:41,023 - root - INFO - nu-parameter: 0.10
+2024-08-05 09:25:41,063 - root - INFO - Starting train filter_model...
+2024-08-05 09:26:01,053 - root - INFO - -----------------------------------------------------------------
+2024-08-05 09:26:01,056 - root - INFO - -----------------------------------------------------------------
+2024-08-05 09:26:01,056 - root - INFO - Log file is ../Results/21_Lymphography_all/nf_glow/log500/log_21_Lymphography_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-05 09:26:01,057 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-05 09:26:01,057 - root - INFO - Dataset: 21_Lymphography_all
+2024-08-05 09:26:01,057 - root - INFO - Normal class: 0
+2024-08-05 09:26:01,057 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-05 09:26:01,057 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-05 09:26:01,057 - root - INFO - Pollution ratio of unlabeled train data: 0.04
+2024-08-05 09:26:01,058 - root - INFO - Number of known anomaly classes: 0
+2024-08-05 09:26:01,058 - root - INFO - Network: 21_Lymphography_mlp_vae_gaussian
+2024-08-05 09:26:01,058 - root - INFO - nu-parameter: 0.10
+2024-08-05 09:26:01,101 - root - INFO - Starting train filter_model...
