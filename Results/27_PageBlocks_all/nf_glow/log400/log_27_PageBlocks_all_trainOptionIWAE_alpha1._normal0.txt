@@ -1,0 +1,26 @@
+2024-08-08 09:37:27,533 - root - INFO - -----------------------------------------------------------------
+2024-08-08 09:37:27,534 - root - INFO - -----------------------------------------------------------------
+2024-08-08 09:37:27,535 - root - INFO - Log file is ../Results/27_PageBlocks_all/nf_glow/log400/log_27_PageBlocks_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-08 09:37:27,535 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-08 09:37:27,536 - root - INFO - Dataset: 27_PageBlocks_all
+2024-08-08 09:37:27,536 - root - INFO - Normal class: 0
+2024-08-08 09:37:27,536 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-08 09:37:27,537 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-08 09:37:27,538 - root - INFO - Pollution ratio of unlabeled train data: 0.09
+2024-08-08 09:37:27,538 - root - INFO - Number of known anomaly classes: 0
+2024-08-08 09:37:27,539 - root - INFO - Network: 27_PageBlocks_mlp_vae_gaussian
+2024-08-08 09:37:27,539 - root - INFO - nu-parameter: 0.10
+2024-08-08 09:37:27,686 - root - INFO - Starting train filter_model...
+2024-08-08 09:38:32,853 - root - INFO - -----------------------------------------------------------------
+2024-08-08 09:38:32,855 - root - INFO - -----------------------------------------------------------------
+2024-08-08 09:38:32,856 - root - INFO - Log file is ../Results/27_PageBlocks_all/nf_glow/log500/log_27_PageBlocks_all_trainOptionIWAE_alpha1._normal0.txt
+2024-08-08 09:38:32,856 - root - INFO - Data path is /home/jovyan/offering-optimizer-datavol-1/data/ADBench/datasets/Classical
+2024-08-08 09:38:32,857 - root - INFO - Dataset: 27_PageBlocks_all
+2024-08-08 09:38:32,857 - root - INFO - Normal class: 0
+2024-08-08 09:38:32,858 - root - INFO - Ratio of labeled normal train samples: 0.00
+2024-08-08 09:38:32,859 - root - INFO - Ratio of labeled anomalous samples: 0.00
+2024-08-08 09:38:32,859 - root - INFO - Pollution ratio of unlabeled train data: 0.09
+2024-08-08 09:38:32,860 - root - INFO - Number of known anomaly classes: 0
+2024-08-08 09:38:32,860 - root - INFO - Network: 27_PageBlocks_mlp_vae_gaussian
+2024-08-08 09:38:32,861 - root - INFO - nu-parameter: 0.10
+2024-08-08 09:38:33,019 - root - INFO - Starting train filter_model...

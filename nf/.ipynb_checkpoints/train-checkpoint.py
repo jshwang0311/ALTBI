@@ -36,8 +36,8 @@ import argparse
 parser = argparse.ArgumentParser(description='ALTBI Experiment')
 # arguments for optimization
 parser.add_argument('--use_cuda', type=bool, default=True)
-parser.add_argument('--gpu_num', type=int, default=0)
-parser.add_argument('--dataset_name', type=str, default='mnist')
+parser.add_argument('--gpu_num', type=int, default=1)
+parser.add_argument('--dataset_name', type=str, default='27_PageBlocks_all')
 parser.add_argument('--dataset_name_option', type=str, default=None, choices=[None, 'all', 'adbench', 'adbench_all'])
 parser.add_argument('--filter_net_name', type=str, default=None)
 parser.add_argument('--data_path', type=str, default=None)
@@ -233,7 +233,7 @@ if __name__ == "__main__":
                 train_idxs_ys = pd.DataFrame({'idx' : train_idxs,'y' : train_ys})
                 train_n =  train_ys.shape[0]
                 loss_column = ['idx','ens_value','ens_st_value','y']
- 
+
                 for model_iter in range(n_ens):
                     model_seed = start_model_seed+(model_iter*5)
                     gamma= args.gamma

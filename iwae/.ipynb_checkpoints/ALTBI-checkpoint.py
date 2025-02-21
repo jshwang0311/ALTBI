@@ -1,3 +1,8 @@
+import os
+os.getcwd()
+os.chdir('/home/dongha0718/sy/odim')
+
+
 from base.base_trainer import BaseTrainer
 from base.base_dataset import BaseADDataset  #loaders
 from base.base_net import BaseNet
@@ -19,9 +24,7 @@ import pandas as pd
 from torch.utils.data import ConcatDataset, DataLoader
 from sklearn.mixture import GaussianMixture
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
-# from networks.main import build_network
-import normflows as nf
-from glow import Glow
+from networks.main import build_network
 
 
 def binarize(inputs):
@@ -29,103 +32,65 @@ def binarize(inputs):
     inputs[inputs <= 0.5] = 0.
     return inputs
 
-def compute_loss(nll, reduction="mean"):
-    if reduction == "mean":
-        losses = {"nll": torch.mean(nll)}
-    elif reduction == "none":
-        losses = {"nll": nll}
 
-    losses["total_loss"] = losses["nll"]
+def odim_light(dataset_name,dataset, filter_net_name, model_seed,seed, logger, train_option, gamma_,qt_,ens,train_n,SSOD=True):
 
-    return losses
-
-def odim_light(dataset_name,dataset, filter_net_name, model_seed,seed, logger, 
-               train_option, gamma_,qt_,ens,train_n,
-              nf_option, input_shape):
+    if 'VAE_alpha1.' in train_option:
+        num_sam = 1
+        num_aggr = 1
+        alpha = 1.
+    elif 'IWAE_alpha1.' in train_option:
+        #num_sam = 100
+        #num_aggr = 50
+        # For CNN
+        num_sam = 50
+        num_aggr = 10
+        alpha = 1.
+    elif 'VAE_alpha100.' in train_option:
+        num_sam = 1
+        num_aggr = 1
+        alpha = 100.
+    elif 'IWAE_alpha100.' in train_option:
+        num_sam = 100
+        num_aggr = 50
+        alpha = 100.
+    elif 'VAE_alpha0.01' in train_option:
+        num_sam = 1
+        num_aggr = 1
+        alpha = 0.01
+    elif 'IWAE_alpha0.01' in train_option:
+        num_sam = 100
+        num_aggr = 50
+        alpha = 0.01
+    
+    
     import random
-    # lr_milestone = 50
+    lr_milestone = 50
     weight_decay = 0.5e-6
+    optimizer_name = 'adam'
+        
     device = 'cuda'
 
     filter_model_lr = 0.001
-    # not implemented SSOD
-    tot_filter_model_n_epoch = 90
+    if SSOD:
+        tot_filter_model_n_epoch = 100
+    
+    else:
+        tot_filter_model_n_epoch = 90
+
     random.seed(model_seed)
     np.random.seed(model_seed)
     torch.manual_seed(model_seed)
     torch.cuda.manual_seed(model_seed)
     torch.backends.cudnn.deterministic = True
-
+    
     # Initialize DeepSAD model and set neural network phi
-    # Define flows
-    if nf_option == 'glow':
-        # L = 3
-        W = input_shape[2]
-        L = 0
-        for i in range(2):
-            if W == 2:
-                break
-            W = W/2
-            if W % 2 == 1:
-                break
-            else:
-                L += 1
-        # if input_shape[2] > 20 :
-        #     L = 1
-        # else:
-        #     if L > 3:
-        #         L = 3
-        #     if L == 0:
-        #         L = 1
-        if L > 3:
-            L = 3
-        if L == 0:
-            L = 1
-        K = 16
-        n_dims = np.prod(input_shape)
-        channels = input_shape[0]
-        hidden_channels = 256
-        split_mode = 'channel'
-        scale = True
-        num_classes = 1
-        if 'InternetAds' in dataset_name:
-            L = 2
-            K = 16
-            hidden_channels = 128
-        elif 'PageBlocks' in dataset_name:
-            K = 32
-            hidden_channels = 128
-        elif 'shuttle' in dataset_name:
-            K = 32
-            hidden_channels = 128
-            
-        LU_decomposed=True
-        learn_top=True
-        actnorm_scale=1.0; flow_permutation='invconv'; flow_coupling='affine'; 
-        y_condition=False
-
-        model = Glow(
-                    input_shape,
-                    hidden_channels,
-                    K,
-                    L,
-                    actnorm_scale,
-                    flow_permutation,
-                    flow_coupling,
-                    LU_decomposed,
-                    num_classes,
-                    learn_top,
-                    y_condition,
-                )
-
-        # Move model on GPU if available
-        enable_cuda = True
-        device = torch.device('cuda' if torch.cuda.is_available() and enable_cuda else 'cpu')
-        model = model.to(device)
-
-    optimizer = optim.Adam(model.parameters(), lr=filter_model_lr, weight_decay=weight_decay)
+    filter_model = build_network(filter_net_name)
+    filter_model = filter_model.to(device)
+    
+    filter_optimizer = optim.Adam(filter_model.parameters(), lr=filter_model_lr, weight_decay=weight_decay)
     # Set learning rate scheduler
-    # scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=(lr_milestone,), gamma=0.1)
+    filter_scheduler = optim.lr_scheduler.MultiStepLR(filter_optimizer, milestones=(lr_milestone,), gamma=0.1)
 
     # Training
     logger.info('Starting train filter_model...')
@@ -169,30 +134,19 @@ def odim_light(dataset_name,dataset, filter_net_name, model_seed,seed, logger,
             adaptive_batch_size = m_0
         else:
             if 'CIFAR'in dataset_name:
-                # if gamma_ > 1.01:
-                #     adaptive_batch_size = min(int(m_0 * (gamma ** (epoch-epoch_qt))), train_n, 3000)
                 if gamma_ > 1.01:
-                    adaptive_batch_size = min(int(m_0 * (gamma ** (epoch-epoch_qt))), train_n, 1000)
+                    adaptive_batch_size = min(int(m_0 * (gamma ** (epoch-epoch_qt))), train_n, 3000)
+                
             elif 'MNIST-C'in dataset_name:
                 if gamma_ > 1.01:
                     adaptive_batch_size = min(int(m_0 * (gamma ** (epoch-epoch_qt))), train_n, 1000)
-            elif 'PageBlocks' in dataset_name:
-                if gamma_ > 1.01:
-                    adaptive_batch_size = min(int(m_0 * (gamma ** (epoch-epoch_qt))), train_n, 500)
             elif 'InternetAds' in dataset_name:
                 if gamma_ > 1.01:
-                    # adaptive_batch_size = min(int(m_0 * (gamma ** (epoch-epoch_qt))), train_n, 1000)
-                    adaptive_batch_size = min(int(m_0 * (gamma ** (epoch-epoch_qt))), train_n, 500)
+                    adaptive_batch_size = min(int(m_0 * (gamma ** (epoch-epoch_qt))), train_n, 1000)
             elif 'SVHN' in dataset_name:
                 if gamma_ > 1.01:
                     adaptive_batch_size = min(int(m_0 * (gamma ** (epoch-epoch_qt))), train_n, 1000)
             elif dataset_name=='mnist':
-                if gamma_ > 1.01:
-                    adaptive_batch_size = min(int(m_0 * (gamma ** (epoch-epoch_qt))), train_n, 5000)
-            elif 'donors' in dataset_name:
-                if gamma_ > 1.01:
-                    adaptive_batch_size = min(int(m_0 * (gamma ** (epoch-epoch_qt))), train_n, 5000)
-            elif 'shuttle' in dataset_name:
                 if gamma_ > 1.01:
                     adaptive_batch_size = min(int(m_0 * (gamma ** (epoch-epoch_qt))), train_n, 5000)
             else:
@@ -209,8 +163,34 @@ def odim_light(dataset_name,dataset, filter_net_name, model_seed,seed, logger,
         else:
             train_loader_noshuf, test_loader_noshuf  = dataset.loaders(batch_size=128, shuffle_train=False,num_workers=n_jobs_dataloader)
 
-        # not implement SSOD
-        train_iter = iter(train_loader)
+        if SSOD: 
+            filtered_inputs = []
+            filtered_targets = []
+            filtered_idxs = []
+
+
+            for inputs, targets, idxs in train_loader:
+                mask = (targets == 0)
+                filtered_inputs.append(inputs[mask])
+                filtered_targets.append(targets[mask])
+                filtered_idxs.append(idxs[mask])
+                
+            filtered_inputs = torch.cat(filtered_inputs)
+            filtered_targets = torch.cat(filtered_targets)
+            filtered_idxs = torch.cat(filtered_idxs)
+
+            if dataset_name in ['mnist', 'fmnist']:
+                filtered_inputs = filtered_inputs.view(filtered_inputs.size(0), -1)
+
+            ssod_inputs = filtered_inputs
+
+            ssod_dataset = torch.utils.data.TensorDataset(ssod_inputs, filtered_targets, filtered_idxs)
+            ssod_loader = torch.utils.data.DataLoader(ssod_dataset, batch_size=adaptive_batch_size, shuffle=True)
+            
+            train_iter = iter(ssod_loader)
+        else: 
+            train_iter = iter(train_loader)
+
 
         train_loss_list = []
         train_targets_list = []
@@ -226,73 +206,136 @@ def odim_light(dataset_name,dataset, filter_net_name, model_seed,seed, logger,
                 inputs, targets, idx = next(train_iter)
 
             inputs, targets = inputs.to(device), targets.to(device)
-
-            # inputs = inputs.view(inputs.size(0), -1)
+            inputs = inputs.view(inputs.size(0), -1)
             #break
-            # if 'binarize' in train_option:
-            #     inputs = binarize(inputs)
+            if 'binarize' in train_option:
+                inputs = binarize(inputs)
             # Zero the network parameter gradients
-            model.train()
-            optimizer.zero_grad()
-            z, nll, y_logits = model(inputs, None)
-            # losses = compute_loss(nll)
-            # losses["total_loss"].backward()
-            # if max_grad_clip > 0:
-            #     torch.nn.utils.clip_grad_value_(model.parameters(), max_grad_clip)
-            # if max_grad_norm > 0:
-            #     torch.nn.utils.clip_grad_norm_(model.parameters(), max_grad_norm)
-            # optimizer.step()
+            filter_model.train()
+            filter_optimizer.zero_grad()
+            # Update network parameters via backpropagation: forward + backward + optimize
+            if 'pixel' in filter_net_name:
+                loss,loss_vec = VAE_IWAE_loss_gaussian_mean_var_pixelcnn(inputs , filter_model , num_sam , num_aggr,alpha)
+            elif 'gaussian' in filter_net_name:
+                loss,loss_vec = VAE_IWAE_loss_gaussian_mean_var(inputs , filter_model , num_sam , num_aggr,alpha)
+            elif 'gaussian' in train_option:
+                loss,loss_vec = VAE_IWAE_loss_gaussian(inputs , filter_model , num_sam , num_aggr,alpha)
+            else:
+                loss,loss_vec = VAE_IWAE_loss(inputs , filter_model , num_sam , num_aggr,alpha)
+
             #####################################################################
             #####################################################################
 
-            train_loss_list.append(nll.data.cpu())  
+            train_loss_list.append(loss_vec.data.cpu())  
             train_targets_list.append(targets.cpu().numpy())
             train_idx_list += list(idx.numpy())
 
 
             loss_quantile_prob = 1-(np.clip((epoch-epoch_qt),0,1)*(1-m_1/m_0)) 
-            loss_quantile = torch.quantile(nll.detach(), loss_quantile_prob)    
-            trimming_ind = (nll.detach()<=loss_quantile)   
-            trimmed_loss = (nll*trimming_ind).sum()/trimming_ind.sum()   
+            loss_quantile = torch.quantile(loss_vec.detach(), loss_quantile_prob)    
+            trimming_ind = (loss_vec.detach()<=loss_quantile)   
+            trimmed_loss = (loss_vec*trimming_ind).sum()/trimming_ind.sum()   
             filtered_targets = targets[trimming_ind]
-
+            
             trimmed_loss.backward()
-            optimizer.step()
+            filter_optimizer.step()
 
-        # not implement SSOD
-        if epoch > 70:
-            patience_idx = 0
-            running_time += (time.time() - start_time)
+  
+        if SSOD:
+            if epoch > 70:
+                patience_idx = 0
+                running_time += (time.time() - start_time)
 
-            train_loss_list_eval = []
-            train_targets_list_eval = []
-            train_idx_list_eval = []
+                test_loss_list_eval = []
+                test_targets_list_eval = []
+                test_idx_list_eval = []
 
-            model.eval()
-            for data in train_loader_noshuf:
-                inputs, targets ,idx = data
-                inputs = inputs.to(device)
-                # if 'binarize' in train_option:
-                #     inputs = binarize(inputs)
-                # Update network parameters via backpropagation: forward + backward + optimize
-                z, nll, y_logits = model(inputs, None)
-                train_loss_list_eval.append(nll.data.cpu())
-                train_targets_list_eval.append(targets.cpu().numpy())
-                train_idx_list_eval += list(idx.numpy())
+                filter_model.eval()
+                for data in test_loader:
+                    inputs, targets ,idx = data
+                    inputs = inputs.to(device)
+                    inputs = inputs.view(inputs.size(0), -1)
+                    if 'binarize' in train_option:
+                        inputs = binarize(inputs)
+                    # Update network parameters via backpropagation: forward + backward + optimize
+                    if 'pixel' in filter_net_name:
+                        loss,loss_vec = VAE_IWAE_loss_gaussian_mean_var_pixelcnn(inputs , filter_model , num_sam , num_aggr,1.)
+                    elif 'gaussian' in filter_net_name:
+                        loss,loss_vec = VAE_IWAE_loss_gaussian_mean_var(inputs , filter_model , num_sam , num_aggr,1.)
+                    elif 'gaussian' in train_option:
+                        loss,loss_vec = VAE_IWAE_loss_gaussian(inputs , filter_model , num_sam , num_aggr,1.)
+                    else:
+                        loss,loss_vec = VAE_IWAE_loss(inputs , filter_model , num_sam , num_aggr,1.)
+
+                    test_loss_list_eval.append(loss_vec.data.cpu())
+                    test_targets_list_eval.append(targets.cpu().numpy())
+                    test_idx_list_eval += list(idx.numpy())
+                   
+                        
+
+                test_losses = torch.cat(test_loss_list_eval,0).numpy().reshape(-1,1)
+                best_idx = test_idx_list_eval
+                Epoch = epoch
+                start_time = time.time()
+                test_targets_list = np.concatenate(test_targets_list_eval)
+                test_loss_list = np.concatenate(test_loss_list_eval)
+                auc = roc_auc_score(test_targets_list,test_loss_list)
+
+                test_auc_sc.append(auc)
+                minmax_scaler = MinMaxScaler()
+                if best_loss_matrix.size == 0 :
+                    best_loss_matrix = minmax_scaler.fit_transform(test_losses)
+                else:
+                    best_loss_matrix = np.hstack((best_loss_matrix, minmax_scaler.fit_transform(test_losses)))
 
 
-            train_losses = torch.cat(train_loss_list_eval,0).numpy().reshape(-1,1)
-            best_idx = train_idx_list_eval
-            #Epoch = epoch
-            start_time = time.time()
+        else:
+            if epoch > 70:
+                patience_idx = 0
+                running_time += (time.time() - start_time)
 
-            minmax_scaler = MinMaxScaler()
-            if best_loss_matrix.size == 0 :
-                best_loss_matrix = minmax_scaler.fit_transform(train_losses)
-            else:
-                best_loss_matrix = np.hstack((best_loss_matrix, minmax_scaler.fit_transform(train_losses)))
+                train_loss_list_eval = []
+                train_targets_list_eval = []
+                train_idx_list_eval = []
+
+                filter_model.eval()
+                for data in train_loader_noshuf:
+                    inputs, targets ,idx = data
+                    inputs = inputs.to(device)
+                    inputs = inputs.view(inputs.size(0), -1)
+                    if 'binarize' in train_option:
+                        inputs = binarize(inputs)
+                    # Update network parameters via backpropagation: forward + backward + optimize
+                    if 'pixel' in filter_net_name:
+                        loss,loss_vec = VAE_IWAE_loss_gaussian_mean_var_pixelcnn(inputs , filter_model , num_sam , num_aggr,1.)
+                    elif 'gaussian' in filter_net_name:
+                        loss,loss_vec = VAE_IWAE_loss_gaussian_mean_var(inputs , filter_model , num_sam , num_aggr,1.)
+                    elif 'gaussian' in train_option:
+                        loss,loss_vec = VAE_IWAE_loss_gaussian(inputs , filter_model , num_sam , num_aggr,1.)
+                    else:
+                        loss,loss_vec = VAE_IWAE_loss(inputs , filter_model , num_sam , num_aggr,1.)
+
+                    train_loss_list_eval.append(loss_vec.data.cpu())
+                    train_targets_list_eval.append(targets.cpu().numpy())
+                    train_idx_list_eval += list(idx.numpy())
+
+
+                train_losses = torch.cat(train_loss_list_eval,0).numpy().reshape(-1,1)
+                best_idx = train_idx_list_eval
+                #Epoch = epoch
+                start_time = time.time()
+                
+                minmax_scaler = MinMaxScaler()
+                if best_loss_matrix.size == 0 :
+                    best_loss_matrix = minmax_scaler.fit_transform(train_losses)
+                else:
+                    best_loss_matrix = np.hstack((best_loss_matrix, minmax_scaler.fit_transform(train_losses)))
+
+
+                
 
         running_time += (time.time() - start_time)
+   
         print(epoch)
         # log epoch statistics
         epoch_train_time = time.time() - epoch_start_time

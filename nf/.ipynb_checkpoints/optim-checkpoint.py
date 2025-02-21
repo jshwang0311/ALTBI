@@ -70,13 +70,17 @@ def odim_light(dataset_name,dataset, filter_net_name, model_seed,seed, logger,
                 break
             else:
                 L += 1
-        if input_shape[2] > 20 :
+        # if input_shape[2] > 20 :
+        #     L = 1
+        # else:
+        #     if L > 3:
+        #         L = 3
+        #     if L == 0:
+        #         L = 1
+        if L > 3:
+            L = 3
+        if L == 0:
             L = 1
-        else:
-            if L > 3:
-                L = 3
-            if L == 0:
-                L = 1
         K = 16
         n_dims = np.prod(input_shape)
         channels = input_shape[0]
@@ -84,7 +88,17 @@ def odim_light(dataset_name,dataset, filter_net_name, model_seed,seed, logger,
         split_mode = 'channel'
         scale = True
         num_classes = 1
-
+        if 'InternetAds' in dataset_name:
+            L = 2
+            K = 16
+            hidden_channels = 128
+        elif 'PageBlocks' in dataset_name:
+            K = 32
+            hidden_channels = 128
+        elif 'shuttle' in dataset_name:
+            K = 32
+            hidden_channels = 128
+            
         LU_decomposed=True
         learn_top=True
         actnorm_scale=1.0; flow_permutation='invconv'; flow_coupling='affine'; 
@@ -162,6 +176,9 @@ def odim_light(dataset_name,dataset, filter_net_name, model_seed,seed, logger,
             elif 'MNIST-C'in dataset_name:
                 if gamma_ > 1.01:
                     adaptive_batch_size = min(int(m_0 * (gamma ** (epoch-epoch_qt))), train_n, 1000)
+            elif 'PageBlocks' in dataset_name:
+                if gamma_ > 1.01:
+                    adaptive_batch_size = min(int(m_0 * (gamma ** (epoch-epoch_qt))), train_n, 500)
             elif 'InternetAds' in dataset_name:
                 if gamma_ > 1.01:
                     # adaptive_batch_size = min(int(m_0 * (gamma ** (epoch-epoch_qt))), train_n, 1000)
